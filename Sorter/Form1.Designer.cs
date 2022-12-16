@@ -31,9 +31,10 @@
             this.FolderToMonitorList = new System.Windows.Forms.ListBox();
             this.AddFolderToMonitorButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.MonitorTab = new System.Windows.Forms.TabPage();
             this.Home = new System.Windows.Forms.TabPage();
+            this.MonitorTab = new System.Windows.Forms.TabPage();
             this.RemoveFolderToMonitor = new System.Windows.Forms.Button();
+            this.ClearListToMonitor = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.MonitorTab.SuspendLayout();
             this.SuspendLayout();
@@ -45,15 +46,15 @@
             this.FolderToMonitorList.ItemHeight = 25;
             this.FolderToMonitorList.Location = new System.Drawing.Point(3, 3);
             this.FolderToMonitorList.Name = "FolderToMonitorList";
-            this.FolderToMonitorList.Size = new System.Drawing.Size(535, 329);
+            this.FolderToMonitorList.Size = new System.Drawing.Size(831, 504);
             this.FolderToMonitorList.TabIndex = 0;
             this.FolderToMonitorList.SelectedIndexChanged += new System.EventHandler(this.FolderToMonitorList_SelectedIndexChanged);
             // 
             // AddFolderToMonitorButton
             // 
-            this.AddFolderToMonitorButton.Location = new System.Drawing.Point(547, 6);
+            this.AddFolderToMonitorButton.Location = new System.Drawing.Point(6, 510);
             this.AddFolderToMonitorButton.Name = "AddFolderToMonitorButton";
-            this.AddFolderToMonitorButton.Size = new System.Drawing.Size(287, 34);
+            this.AddFolderToMonitorButton.Size = new System.Drawing.Size(276, 53);
             this.AddFolderToMonitorButton.TabIndex = 1;
             this.AddFolderToMonitorButton.Text = "Add";
             this.AddFolderToMonitorButton.UseVisualStyleBackColor = true;
@@ -69,8 +70,19 @@
             this.tabControl1.Size = new System.Drawing.Size(848, 607);
             this.tabControl1.TabIndex = 3;
             // 
+            // Home
+            // 
+            this.Home.Location = new System.Drawing.Point(4, 34);
+            this.Home.Name = "Home";
+            this.Home.Padding = new System.Windows.Forms.Padding(3);
+            this.Home.Size = new System.Drawing.Size(840, 569);
+            this.Home.TabIndex = 1;
+            this.Home.Text = "HomeTab";
+            this.Home.UseVisualStyleBackColor = true;
+            // 
             // MonitorTab
             // 
+            this.MonitorTab.Controls.Add(this.ClearListToMonitor);
             this.MonitorTab.Controls.Add(this.RemoveFolderToMonitor);
             this.MonitorTab.Controls.Add(this.FolderToMonitorList);
             this.MonitorTab.Controls.Add(this.AddFolderToMonitorButton);
@@ -82,25 +94,25 @@
             this.MonitorTab.Text = "Monitor";
             this.MonitorTab.UseVisualStyleBackColor = true;
             // 
-            // Home
-            // 
-            this.Home.Location = new System.Drawing.Point(4, 34);
-            this.Home.Name = "Home";
-            this.Home.Padding = new System.Windows.Forms.Padding(3);
-            this.Home.Size = new System.Drawing.Size(840, 569);
-            this.Home.TabIndex = 1;
-            this.Home.Text = "HomeTab";
-            this.Home.UseVisualStyleBackColor = true;
-            // 
             // RemoveFolderToMonitor
             // 
-            this.RemoveFolderToMonitor.Location = new System.Drawing.Point(568, 55);
+            this.RemoveFolderToMonitor.Location = new System.Drawing.Point(288, 510);
             this.RemoveFolderToMonitor.Name = "RemoveFolderToMonitor";
-            this.RemoveFolderToMonitor.Size = new System.Drawing.Size(112, 34);
+            this.RemoveFolderToMonitor.Size = new System.Drawing.Size(271, 53);
             this.RemoveFolderToMonitor.TabIndex = 2;
             this.RemoveFolderToMonitor.Text = "Remove";
             this.RemoveFolderToMonitor.UseVisualStyleBackColor = true;
             this.RemoveFolderToMonitor.Click += new System.EventHandler(this.RemoveFolderToMonitor_Click);
+            // 
+            // ClearListToMonitor
+            // 
+            this.ClearListToMonitor.Location = new System.Drawing.Point(565, 510);
+            this.ClearListToMonitor.Name = "ClearListToMonitor";
+            this.ClearListToMonitor.Size = new System.Drawing.Size(269, 53);
+            this.ClearListToMonitor.TabIndex = 3;
+            this.ClearListToMonitor.Text = "Clear";
+            this.ClearListToMonitor.UseVisualStyleBackColor = true;
+            this.ClearListToMonitor.Click += new System.EventHandler(this.ClearListToMonitor_Click);
             // 
             // Form1
             // 
@@ -124,5 +136,6 @@
         private TabPage MonitorTab;
         private TabPage Home;
         private Button RemoveFolderToMonitor;
+        private Button ClearListToMonitor;
     }
 }

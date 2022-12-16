@@ -45,6 +45,12 @@ namespace Sorter
             }
         }
 
+        private void ClearListToMonitor_Click(object sender, EventArgs e)
+        {
+            PersistentData.FoldersToMonitor = new string[] {};
+            RefreshFolderToMonitorList();
+        }
+
         private void RefreshAll()
         {
             RefreshFolderToMonitorList();
@@ -59,7 +65,5 @@ namespace Sorter
                 FolderToMonitorList.Items.Add(item);
             }
         }
-
-
     }
 }
