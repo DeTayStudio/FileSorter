@@ -5,8 +5,10 @@ public static class PersistentData
     public static readonly string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
     public static readonly string PersistantDataPath = AppDataPath + @"\Test";
     public static readonly string FoldersToMonitorPath = PersistantDataPath + @"\FoldersToMonitor";
-    
-    
+
+    public static string sortingPath;
+
+
     public static string[] FoldersToMonitor
     {
         get

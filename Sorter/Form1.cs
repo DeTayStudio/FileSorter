@@ -65,5 +65,10 @@ namespace Sorter
                 FolderToMonitorList.Items.Add(item);
             }
         }
+
+        private void SortingPath_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
