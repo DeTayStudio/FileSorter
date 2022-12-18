@@ -70,5 +70,23 @@ namespace Sorter
         {
 
         }
+
+        private void FolderToMonitorGroupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainFolderSelectionButton_Click(object sender, EventArgs e)
+        {
+            var explorer = new FolderBrowserDialog();
+            explorer.ShowDialog();
+
+            MainFolderTextBox.Text = explorer.SelectedPath;
+        }
+
+        private void MainFolderTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
