@@ -15,3 +15,4 @@ C:\Users\injur\source\repos\Sorter\Sorter\obj\Debug\net6.0-windows\refint\Sorter
 C:\Users\injur\source\repos\Sorter\Sorter\obj\Debug\net6.0-windows\Sorter.pdb
 C:\Users\injur\source\repos\Sorter\Sorter\obj\Debug\net6.0-windows\Sorter.genruntimeconfig.cache
 C:\Users\injur\source\repos\Sorter\Sorter\obj\Debug\net6.0-windows\ref\Sorter.dll
+C:\Users\injur\source\repos\Sorter\Sorter\obj\Debug\net6.0-windows\Sorter.Properties.Resources.resources
