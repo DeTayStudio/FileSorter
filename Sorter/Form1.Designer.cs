@@ -43,20 +43,22 @@
             // 
             // FolderToMonitorList
             // 
-            this.FolderToMonitorList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.FolderToMonitorList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FolderToMonitorList.FormattingEnabled = true;
             this.FolderToMonitorList.HorizontalScrollbar = true;
             this.FolderToMonitorList.ItemHeight = 25;
-            this.FolderToMonitorList.Location = new System.Drawing.Point(3, 132);
+            this.FolderToMonitorList.Location = new System.Drawing.Point(3, 32);
             this.FolderToMonitorList.Name = "FolderToMonitorList";
-            this.FolderToMonitorList.Size = new System.Drawing.Size(494, 929);
+            this.FolderToMonitorList.Size = new System.Drawing.Size(494, 554);
             this.FolderToMonitorList.TabIndex = 0;
             this.FolderToMonitorList.SelectedIndexChanged += new System.EventHandler(this.FolderToMonitorList_SelectedIndexChanged);
             // 
             // AddFolderToMonitorButton
             // 
             this.AddFolderToMonitorButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AddFolderToMonitorButton.Location = new System.Drawing.Point(3, 1061);
+            this.AddFolderToMonitorButton.Location = new System.Drawing.Point(3, 693);
             this.AddFolderToMonitorButton.Name = "AddFolderToMonitorButton";
             this.AddFolderToMonitorButton.Size = new System.Drawing.Size(494, 64);
             this.AddFolderToMonitorButton.TabIndex = 2;
@@ -67,7 +69,7 @@
             // ClearListToMonitor
             // 
             this.ClearListToMonitor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ClearListToMonitor.Location = new System.Drawing.Point(3, 1189);
+            this.ClearListToMonitor.Location = new System.Drawing.Point(3, 821);
             this.ClearListToMonitor.Name = "ClearListToMonitor";
             this.ClearListToMonitor.Size = new System.Drawing.Size(494, 64);
             this.ClearListToMonitor.TabIndex = 1;
@@ -78,7 +80,7 @@
             // RemoveFolderToMonitor
             // 
             this.RemoveFolderToMonitor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.RemoveFolderToMonitor.Location = new System.Drawing.Point(3, 1125);
+            this.RemoveFolderToMonitor.Location = new System.Drawing.Point(3, 757);
             this.RemoveFolderToMonitor.Name = "RemoveFolderToMonitor";
             this.RemoveFolderToMonitor.Size = new System.Drawing.Size(494, 64);
             this.RemoveFolderToMonitor.TabIndex = 3;
@@ -95,7 +97,7 @@
             this.FolderToMonitorGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.FolderToMonitorGroupBox.Location = new System.Drawing.Point(0, 74);
             this.FolderToMonitorGroupBox.Name = "FolderToMonitorGroupBox";
-            this.FolderToMonitorGroupBox.Size = new System.Drawing.Size(500, 1256);
+            this.FolderToMonitorGroupBox.Size = new System.Drawing.Size(500, 888);
             this.FolderToMonitorGroupBox.TabIndex = 4;
             this.FolderToMonitorGroupBox.TabStop = false;
             this.FolderToMonitorGroupBox.Text = "Monitor";
@@ -106,16 +108,18 @@
             this.SortingGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.SortingGroupBox.Location = new System.Drawing.Point(500, 74);
             this.SortingGroupBox.Name = "SortingGroupBox";
-            this.SortingGroupBox.Size = new System.Drawing.Size(500, 1256);
+            this.SortingGroupBox.Size = new System.Drawing.Size(500, 888);
             this.SortingGroupBox.TabIndex = 5;
             this.SortingGroupBox.TabStop = false;
             this.SortingGroupBox.Text = "Sorting";
             // 
             // MainFolderTextBox
             // 
-            this.MainFolderTextBox.Location = new System.Drawing.Point(6, 30);
+            this.MainFolderTextBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MainFolderTextBox.Location = new System.Drawing.Point(3, 27);
+            this.MainFolderTextBox.Multiline = true;
             this.MainFolderTextBox.Name = "MainFolderTextBox";
-            this.MainFolderTextBox.Size = new System.Drawing.Size(1897, 31);
+            this.MainFolderTextBox.Size = new System.Drawing.Size(1569, 44);
             this.MainFolderTextBox.TabIndex = 6;
             this.MainFolderTextBox.TextChanged += new System.EventHandler(this.MainFolderTextBox_TextChanged);
             // 
@@ -126,16 +130,17 @@
             this.MainSettingsGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainSettingsGroupBox.Location = new System.Drawing.Point(0, 0);
             this.MainSettingsGroupBox.Name = "MainSettingsGroupBox";
-            this.MainSettingsGroupBox.Size = new System.Drawing.Size(2093, 74);
+            this.MainSettingsGroupBox.Size = new System.Drawing.Size(1797, 74);
             this.MainSettingsGroupBox.TabIndex = 7;
             this.MainSettingsGroupBox.TabStop = false;
             this.MainSettingsGroupBox.Text = "Main";
             // 
             // MainFolderSelectionButton
             // 
-            this.MainFolderSelectionButton.Location = new System.Drawing.Point(1909, 30);
+            this.MainFolderSelectionButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.MainFolderSelectionButton.Location = new System.Drawing.Point(1581, 27);
             this.MainFolderSelectionButton.Name = "MainFolderSelectionButton";
-            this.MainFolderSelectionButton.Size = new System.Drawing.Size(172, 31);
+            this.MainFolderSelectionButton.Size = new System.Drawing.Size(213, 44);
             this.MainFolderSelectionButton.TabIndex = 7;
             this.MainFolderSelectionButton.Text = "...";
             this.MainFolderSelectionButton.UseVisualStyleBackColor = true;
@@ -146,10 +151,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(2093, 1330);
+            this.ClientSize = new System.Drawing.Size(1797, 962);
             this.Controls.Add(this.SortingGroupBox);
             this.Controls.Add(this.FolderToMonitorGroupBox);
             this.Controls.Add(this.MainSettingsGroupBox);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FolderToMonitorGroupBox.ResumeLayout(false);
