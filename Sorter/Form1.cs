@@ -57,15 +57,6 @@ namespace Sorter
                 RefreshFolderToMonitorList();
             }
         }
-
-        private void ClearListToMonitor_Click(object sender, EventArgs e)
-        {
-            //Sets an empty string array as the new standard list
-            PersistentData.FoldersToMonitor = new string[] {};
-            
-            //Refreshes the gui part
-            RefreshFolderToMonitorList();
-        }
         
         private void FolderToMonitorGroupBox_Enter(object sender, EventArgs e)
         {
