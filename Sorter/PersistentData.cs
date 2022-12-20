@@ -2,11 +2,29 @@ namespace Sorter;
 
 public static class PersistentData
 {
-    public static readonly string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-    public static readonly string PersistantDataPath = AppDataPath + @"\Test";
-    public static readonly string FoldersToMonitorPath = PersistantDataPath + @"\FoldersToMonitor";
+    private static readonly string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+    private static readonly string PersistantDataPath = AppDataPath + @"\Test";
+    private static readonly string FoldersToMonitorPath = PersistantDataPath + @"\FoldersToMonitor";
+    private static readonly string MainSortingPath = PersistantDataPath + @"\MainSortingFolder";
 
-    public static string sortingPath;
+    
+    public static string SortingPath
+    {
+        get
+        {
+            ValidateFolder(PersistantDataPath);
+            ValidateFile(MainSortingPath);
+            
+            return File.ReadAllText(MainSortingPath);
+        }
+        set
+        {
+            ValidateFolder(PersistantDataPath);
+            ValidateFile(FoldersToMonitorPath);
+            
+            File.WriteAllText(MainSortingPath, value);
+        }
+    }
 
 
     public static string[] FoldersToMonitor

@@ -50,10 +50,54 @@ namespace Sorter
             PersistentData.FoldersToMonitor = new string[] {};
             RefreshFolderToMonitorList();
         }
+        
+        private void FolderToMonitorGroupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainFolderSelectionButton_Click(object sender, EventArgs e)
+        {
+            var explorer = new FolderBrowserDialog();
+            explorer.ShowDialog();
+
+            PersistentData.SortingPath = explorer.SelectedPath;
+            RefreshMainSortingDirectory();
+        }
+
+        private void MainFolderTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DragFileToSortLabel_Click(object sender, EventArgs e)
+        {
+            var explorer = new OpenFileDialog();
+            explorer.ShowDialog();
+            
+            Sort(explorer.FileName);
+        }
+
+        private void Sort(string path)
+        {
+            if (MainFolderTextBox.Text != String.Empty && Directory.Exists(MainFolderTextBox.Text))
+            {
+                var fileInfo = new FileInfo(path);
+
+                MessageBox.Show(fileInfo.Name);
+            }
+            else
+            {
+                MessageBox.Show(@"Please provide a main sorting folder.");
+            }
+        }
+
+        #region Refresh
 
         private void RefreshAll()
         {
             RefreshFolderToMonitorList();
+            RefreshMainSortingDirectory();
         }
 
         private void RefreshFolderToMonitorList()
@@ -66,22 +110,13 @@ namespace Sorter
             }
         }
 
-        private void FolderToMonitorGroupBox_Enter(object sender, EventArgs e)
+        private void RefreshMainSortingDirectory()
         {
+            MainFolderTextBox.Text = String.Empty;
 
+            MainFolderTextBox.Text = PersistentData.SortingPath;
         }
 
-        private void MainFolderSelectionButton_Click(object sender, EventArgs e)
-        {
-            var explorer = new FolderBrowserDialog();
-            explorer.ShowDialog();
-
-            MainFolderTextBox.Text = explorer.SelectedPath;
-        }
-
-        private void MainFolderTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

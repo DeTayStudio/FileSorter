@@ -37,7 +37,9 @@
             this.MainFolderTextBox = new System.Windows.Forms.TextBox();
             this.MainSettingsGroupBox = new System.Windows.Forms.GroupBox();
             this.MainFolderSelectionButton = new System.Windows.Forms.Button();
+            this.DragFileToSortLabel = new System.Windows.Forms.Label();
             this.FolderToMonitorGroupBox.SuspendLayout();
+            this.SortingGroupBox.SuspendLayout();
             this.MainSettingsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,6 +107,7 @@
             // 
             // SortingGroupBox
             // 
+            this.SortingGroupBox.Controls.Add(this.DragFileToSortLabel);
             this.SortingGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.SortingGroupBox.Location = new System.Drawing.Point(0, 74);
             this.SortingGroupBox.Name = "SortingGroupBox";
@@ -146,6 +149,20 @@
             this.MainFolderSelectionButton.UseVisualStyleBackColor = true;
             this.MainFolderSelectionButton.Click += new System.EventHandler(this.MainFolderSelectionButton_Click);
             // 
+            // DragFileToSortLabel
+            // 
+            this.DragFileToSortLabel.AllowDrop = true;
+            this.DragFileToSortLabel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.DragFileToSortLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DragFileToSortLabel.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DragFileToSortLabel.Location = new System.Drawing.Point(3, 27);
+            this.DragFileToSortLabel.Name = "DragFileToSortLabel";
+            this.DragFileToSortLabel.Size = new System.Drawing.Size(494, 1095);
+            this.DragFileToSortLabel.TabIndex = 0;
+            this.DragFileToSortLabel.Text = "Drag file onto here to Sort!";
+            this.DragFileToSortLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DragFileToSortLabel.Click += new System.EventHandler(this.DragFileToSortLabel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -160,6 +177,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.FolderToMonitorGroupBox.ResumeLayout(false);
+            this.SortingGroupBox.ResumeLayout(false);
             this.MainSettingsGroupBox.ResumeLayout(false);
             this.MainSettingsGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -177,5 +195,6 @@
         private TextBox MainFolderTextBox;
         private GroupBox MainSettingsGroupBox;
         private Button MainFolderSelectionButton;
+        private Label DragFileToSortLabel;
     }
 }
