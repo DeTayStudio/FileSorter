@@ -13,7 +13,8 @@
     ],
     "additionalProbingPaths": [
       "C:\\Users\\injur\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\injur\\.nuget\\packages"
+      "C:\\Users\\injur\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
