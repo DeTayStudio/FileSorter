@@ -6,6 +6,7 @@ public static class PersistentData
     private static readonly string PersistantDataPath = AppDataPath + @"\Test";
     private static readonly string FoldersToMonitorPath = PersistantDataPath + @"\FoldersToMonitor";
     private static readonly string MainSortingPath = PersistantDataPath + @"\MainSortingFolder";
+    private static readonly string SortingOrder = PersistantDataPath + @"\SortingOrder";
 
     
     public static string SortingPath
@@ -42,6 +43,25 @@ public static class PersistentData
             ValidateFile(FoldersToMonitorPath);
             
             File.WriteAllLines(FoldersToMonitorPath, value);
+        }
+    }
+
+    public static string[] SortingOrderList
+    {
+        get
+        {
+            ValidateFolder(PersistantDataPath);
+            ValidateFile(SortingOrder);
+
+            return File.ReadAllLines(SortingOrder);
+        }
+
+        set
+        {
+            ValidateFolder(PersistantDataPath);
+            ValidateFile(SortingOrder);
+            
+            File.WriteAllLines(SortingOrder, value);
         }
     }
 

@@ -32,16 +32,21 @@
             this.AddFolderToMonitorButton = new System.Windows.Forms.Button();
             this.RemoveFolderToMonitor = new System.Windows.Forms.Button();
             this.FolderToMonitorGroupBox = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SortingGroupBox = new System.Windows.Forms.GroupBox();
+            this.SortingOrderEnumComboBox = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.SortingOrderRemoveButton = new System.Windows.Forms.Button();
             this.SortingOrderAddButton = new System.Windows.Forms.Button();
             this.SortingOrderListBox = new System.Windows.Forms.ListBox();
             this.DragFileToSortLabel = new System.Windows.Forms.Label();
             this.MainFolderTextBox = new System.Windows.Forms.TextBox();
             this.MainSettingsGroupBox = new System.Windows.Forms.GroupBox();
             this.MainFolderSelectionButton = new System.Windows.Forms.Button();
-            this.SortingOrderRemoveButton = new System.Windows.Forms.Button();
             this.FolderToMonitorGroupBox.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SortingGroupBox.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.MainSettingsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,16 +58,16 @@
             this.FolderToMonitorList.ItemHeight = 25;
             this.FolderToMonitorList.Location = new System.Drawing.Point(3, 27);
             this.FolderToMonitorList.Name = "FolderToMonitorList";
-            this.FolderToMonitorList.Size = new System.Drawing.Size(494, 479);
+            this.FolderToMonitorList.Size = new System.Drawing.Size(494, 1554);
             this.FolderToMonitorList.TabIndex = 0;
             this.FolderToMonitorList.SelectedIndexChanged += new System.EventHandler(this.FolderToMonitorList_SelectedIndexChanged);
             // 
             // AddFolderToMonitorButton
             // 
-            this.AddFolderToMonitorButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AddFolderToMonitorButton.Location = new System.Drawing.Point(3, 583);
+            this.AddFolderToMonitorButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.AddFolderToMonitorButton.Location = new System.Drawing.Point(0, 0);
             this.AddFolderToMonitorButton.Name = "AddFolderToMonitorButton";
-            this.AddFolderToMonitorButton.Size = new System.Drawing.Size(494, 63);
+            this.AddFolderToMonitorButton.Size = new System.Drawing.Size(247, 64);
             this.AddFolderToMonitorButton.TabIndex = 2;
             this.AddFolderToMonitorButton.Text = "Add";
             this.AddFolderToMonitorButton.UseVisualStyleBackColor = true;
@@ -70,10 +75,10 @@
             // 
             // RemoveFolderToMonitor
             // 
-            this.RemoveFolderToMonitor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.RemoveFolderToMonitor.Location = new System.Drawing.Point(3, 646);
+            this.RemoveFolderToMonitor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.RemoveFolderToMonitor.Location = new System.Drawing.Point(247, 0);
             this.RemoveFolderToMonitor.Name = "RemoveFolderToMonitor";
-            this.RemoveFolderToMonitor.Size = new System.Drawing.Size(494, 63);
+            this.RemoveFolderToMonitor.Size = new System.Drawing.Size(247, 64);
             this.RemoveFolderToMonitor.TabIndex = 3;
             this.RemoveFolderToMonitor.Text = "Remove";
             this.RemoveFolderToMonitor.UseVisualStyleBackColor = true;
@@ -81,41 +86,82 @@
             // 
             // FolderToMonitorGroupBox
             // 
+            this.FolderToMonitorGroupBox.Controls.Add(this.panel1);
             this.FolderToMonitorGroupBox.Controls.Add(this.FolderToMonitorList);
-            this.FolderToMonitorGroupBox.Controls.Add(this.AddFolderToMonitorButton);
-            this.FolderToMonitorGroupBox.Controls.Add(this.RemoveFolderToMonitor);
             this.FolderToMonitorGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.FolderToMonitorGroupBox.Location = new System.Drawing.Point(500, 73);
             this.FolderToMonitorGroupBox.Name = "FolderToMonitorGroupBox";
-            this.FolderToMonitorGroupBox.Size = new System.Drawing.Size(500, 712);
+            this.FolderToMonitorGroupBox.Size = new System.Drawing.Size(500, 898);
             this.FolderToMonitorGroupBox.TabIndex = 4;
             this.FolderToMonitorGroupBox.TabStop = false;
             this.FolderToMonitorGroupBox.Text = "Monitor";
             this.FolderToMonitorGroupBox.Enter += new System.EventHandler(this.FolderToMonitorGroupBox_Enter);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.RemoveFolderToMonitor);
+            this.panel1.Controls.Add(this.AddFolderToMonitorButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(3, 831);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(494, 64);
+            this.panel1.TabIndex = 8;
+            // 
             // SortingGroupBox
             // 
-            this.SortingGroupBox.Controls.Add(this.SortingOrderRemoveButton);
-            this.SortingGroupBox.Controls.Add(this.SortingOrderAddButton);
+            this.SortingGroupBox.Controls.Add(this.SortingOrderEnumComboBox);
+            this.SortingGroupBox.Controls.Add(this.panel2);
             this.SortingGroupBox.Controls.Add(this.SortingOrderListBox);
             this.SortingGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.SortingGroupBox.Location = new System.Drawing.Point(0, 73);
             this.SortingGroupBox.Name = "SortingGroupBox";
-            this.SortingGroupBox.Size = new System.Drawing.Size(500, 712);
+            this.SortingGroupBox.Size = new System.Drawing.Size(500, 898);
             this.SortingGroupBox.TabIndex = 5;
             this.SortingGroupBox.TabStop = false;
             this.SortingGroupBox.Text = "Sorting";
             // 
+            // SortingOrderEnumComboBox
+            // 
+            this.SortingOrderEnumComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.SortingOrderEnumComboBox.FormattingEnabled = true;
+            this.SortingOrderEnumComboBox.Location = new System.Drawing.Point(3, 798);
+            this.SortingOrderEnumComboBox.Name = "SortingOrderEnumComboBox";
+            this.SortingOrderEnumComboBox.Size = new System.Drawing.Size(494, 33);
+            this.SortingOrderEnumComboBox.TabIndex = 8;
+            this.SortingOrderEnumComboBox.SelectedIndexChanged += new System.EventHandler(this.SortingOrderEnumComboBox_SelectedIndexChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.SortingOrderRemoveButton);
+            this.panel2.Controls.Add(this.SortingOrderAddButton);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(3, 831);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(494, 64);
+            this.panel2.TabIndex = 8;
+            // 
+            // SortingOrderRemoveButton
+            // 
+            this.SortingOrderRemoveButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.SortingOrderRemoveButton.Location = new System.Drawing.Point(256, 0);
+            this.SortingOrderRemoveButton.Name = "SortingOrderRemoveButton";
+            this.SortingOrderRemoveButton.Size = new System.Drawing.Size(238, 64);
+            this.SortingOrderRemoveButton.TabIndex = 2;
+            this.SortingOrderRemoveButton.Text = "Remove Sorting Parameter";
+            this.SortingOrderRemoveButton.UseVisualStyleBackColor = true;
+            this.SortingOrderRemoveButton.Click += new System.EventHandler(this.SortingOrderRemoveButton_Click);
+            // 
             // SortingOrderAddButton
             // 
-            this.SortingOrderAddButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SortingOrderAddButton.Location = new System.Drawing.Point(3, 646);
+            this.SortingOrderAddButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.SortingOrderAddButton.Location = new System.Drawing.Point(0, 0);
             this.SortingOrderAddButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SortingOrderAddButton.Name = "SortingOrderAddButton";
-            this.SortingOrderAddButton.Size = new System.Drawing.Size(494, 63);
+            this.SortingOrderAddButton.Size = new System.Drawing.Size(256, 64);
             this.SortingOrderAddButton.TabIndex = 1;
             this.SortingOrderAddButton.Text = "Add Sorting Parameter";
             this.SortingOrderAddButton.UseVisualStyleBackColor = true;
+            this.SortingOrderAddButton.Click += new System.EventHandler(this.SortingOrderAddButton_Click);
             // 
             // SortingOrderListBox
             // 
@@ -125,8 +171,9 @@
             this.SortingOrderListBox.Location = new System.Drawing.Point(3, 27);
             this.SortingOrderListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SortingOrderListBox.Name = "SortingOrderListBox";
-            this.SortingOrderListBox.Size = new System.Drawing.Size(494, 479);
+            this.SortingOrderListBox.Size = new System.Drawing.Size(494, 1554);
             this.SortingOrderListBox.TabIndex = 0;
+            this.SortingOrderListBox.SelectedIndexChanged += new System.EventHandler(this.SortingOrderListBox_SelectedIndexChanged);
             // 
             // DragFileToSortLabel
             // 
@@ -134,9 +181,9 @@
             this.DragFileToSortLabel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.DragFileToSortLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DragFileToSortLabel.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DragFileToSortLabel.Location = new System.Drawing.Point(0, 785);
+            this.DragFileToSortLabel.Location = new System.Drawing.Point(0, 971);
             this.DragFileToSortLabel.Name = "DragFileToSortLabel";
-            this.DragFileToSortLabel.Size = new System.Drawing.Size(1444, 157);
+            this.DragFileToSortLabel.Size = new System.Drawing.Size(1672, 157);
             this.DragFileToSortLabel.TabIndex = 0;
             this.DragFileToSortLabel.Text = "Drag file onto here to Sort!";
             this.DragFileToSortLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -159,7 +206,7 @@
             this.MainSettingsGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainSettingsGroupBox.Location = new System.Drawing.Point(0, 0);
             this.MainSettingsGroupBox.Name = "MainSettingsGroupBox";
-            this.MainSettingsGroupBox.Size = new System.Drawing.Size(1444, 73);
+            this.MainSettingsGroupBox.Size = new System.Drawing.Size(1672, 73);
             this.MainSettingsGroupBox.TabIndex = 7;
             this.MainSettingsGroupBox.TabStop = false;
             this.MainSettingsGroupBox.Text = "Main";
@@ -167,7 +214,7 @@
             // MainFolderSelectionButton
             // 
             this.MainFolderSelectionButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.MainFolderSelectionButton.Location = new System.Drawing.Point(1228, 27);
+            this.MainFolderSelectionButton.Location = new System.Drawing.Point(1456, 27);
             this.MainFolderSelectionButton.Name = "MainFolderSelectionButton";
             this.MainFolderSelectionButton.Size = new System.Drawing.Size(213, 43);
             this.MainFolderSelectionButton.TabIndex = 7;
@@ -175,32 +222,24 @@
             this.MainFolderSelectionButton.UseVisualStyleBackColor = true;
             this.MainFolderSelectionButton.Click += new System.EventHandler(this.MainFolderSelectionButton_Click);
             // 
-            // SortingOrderRemoveButton
-            // 
-            this.SortingOrderRemoveButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SortingOrderRemoveButton.Location = new System.Drawing.Point(3, 583);
-            this.SortingOrderRemoveButton.Name = "SortingOrderRemoveButton";
-            this.SortingOrderRemoveButton.Size = new System.Drawing.Size(494, 63);
-            this.SortingOrderRemoveButton.TabIndex = 2;
-            this.SortingOrderRemoveButton.Text = "Remove Sorting Parameter";
-            this.SortingOrderRemoveButton.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1444, 942);
+            this.ClientSize = new System.Drawing.Size(1672, 1128);
             this.Controls.Add(this.FolderToMonitorGroupBox);
             this.Controls.Add(this.SortingGroupBox);
             this.Controls.Add(this.MainSettingsGroupBox);
             this.Controls.Add(this.DragFileToSortLabel);
-            this.MaximumSize = new System.Drawing.Size(3838, 2149);
-            this.MinimumSize = new System.Drawing.Size(798, 56);
+            this.MaximumSize = new System.Drawing.Size(3840, 2160);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FolderToMonitorGroupBox.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.SortingGroupBox.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.MainSettingsGroupBox.ResumeLayout(false);
             this.MainSettingsGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -221,5 +260,8 @@
         private Button SortingOrderAddButton;
         private ListBox SortingOrderListBox;
         private Button SortingOrderRemoveButton;
+        private Panel panel1;
+        private Panel panel2;
+        private ComboBox SortingOrderEnumComboBox;
     }
 }
