@@ -114,24 +114,22 @@ namespace Sorter
             //Reads the File again and adds it to the current gui element
             foreach (var folder in PersistentData.FoldersToMonitor)
             {
+                //Adds folders to monitorList
                 FolderToMonitorList.Items.Add(folder);
 
+                //Creates a watcher for each folder
                 var watcher = new FileSystemWatcher(folder);
                 watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
                                                                 | NotifyFilters.FileName | NotifyFilters.DirectoryName;
                 watcher.Filter = "*.*";
-                watcher.Changed += OnChanged;
+                watcher.Changed += ((_, args) => Sort(args.FullPath)) ;
                 watcher.EnableRaisingEvents = true;
                 
+                //Adds the watcher to the watcherList
                 _watchers.Add(watcher);
             }
         }
-
-        private void OnChanged(object sender, FileSystemEventArgs e)
-        {
-            Sort(e.FullPath);
-        }
-
+        
         private void RefreshMainSortingDirectory()
         {
             //Empties the current MainFolderTextBox
@@ -143,8 +141,10 @@ namespace Sorter
 
         private void RefreshSortingOrderList()
         {
+            //Empties the current sortingOrderListBox
             SortingOrderListBox.Items.Clear();
 
+            //Reads the File again and adds it to the current gui element
             foreach (var item in PersistentData.SortingOrderList)
             {
                 SortingOrderListBox.Items.Add(item);
@@ -157,38 +157,49 @@ namespace Sorter
 
         private void Sort(string path)
         {
+            //Checks if a main folder is selected
             if (MainFolderTextBox.Text != String.Empty && Directory.Exists(MainFolderTextBox.Text))
             {
+                //Gets the fileInfo of the file which should be sorted
                 var fileInfo = new FileInfo(path);
 
-                var sortPath = PersistentData.SortingPath;
+                //sets the destination path where the file should be moved to
+                var destPath = PersistentData.SortingPath;
                 
+                //Loops through all active sortingOrderParameters
                 foreach (var sortingOrderParameter in SortingOrderListBox.Items)
                 {
+                    //Parses the string from the sortingOrderList to a usable enum
                     var sortingOrder = Enum.Parse<SortingOrder>((string)sortingOrderParameter);
                     
                     switch (sortingOrder)
                     {
                         case SortingOrder.DateOfSorting:
-                            var dateTime = DateTime.Now;
-                            sortPath += @"\" + dateTime.ToShortDateString();
+                            destPath += @"\" + DateTime.Now.ToShortDateString();
                             break;
-                        case SortingOrder.Type:
-                            sortPath += @"\" + fileInfo.Extension;
+                        case SortingOrder.FileType:
+                            destPath += @"\" + fileInfo.Extension;
+                            break;
+                        case SortingOrder.FileCreationDate:
+                            destPath += @"\" + fileInfo.CreationTime.ToShortDateString();
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
                     
-                    if (!Directory.Exists(sortPath)) Directory.CreateDirectory(sortPath);
+                    //Checks if the current destinationPath exists, and otherwise creates it
+                    if (!Directory.Exists(destPath)) Directory.CreateDirectory(destPath);
                 }
 
-                sortPath += @"\" + fileInfo.Name;
+                //Completes the destinationPath by adding the fileName at the end
+                destPath += @"\" + fileInfo.Name;
 
-                File.Move(fileInfo.FullName, sortPath);
+                //Moves the File from current Path to the generated destinationPath
+                File.Move(fileInfo.FullName, destPath);
             }
             else
             {
+                //Sends MessageBox if no main folder is selected
                 MessageBox.Show(@"Please provide a main sorting folder.");
             }
         }
@@ -205,12 +216,16 @@ namespace Sorter
         
         private void DragFileToSortLabel_DragEnter(object? sender, DragEventArgs e)
         {
+            //Changes the cursor if file is DragDrop
             if (e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
         }
         
         private void DragFileToSortLabel_DragOver(object? sender, DragEventArgs e)
         {
+            //Gets the files paths which are dropped on the label
             string[] files = (string[])e.Data?.GetData(DataFormats.FileDrop)!;
+            
+            //Sorts each file
             foreach (string file in files) Sort(file);
         }
         
