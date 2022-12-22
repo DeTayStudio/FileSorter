@@ -9,10 +9,34 @@ namespace Sorter
             SortingOrderEnumComboBox.DataSource = Enum.GetValues(typeof(SortingOrder));
             DragFileToSortLabel.DragEnter += DragFileToSortLabel_DragEnter;
             DragFileToSortLabel.DragDrop += (DragFileToSortLabel_DragOver);
+            Resize += From1_Resize;
+            systemTray.DoubleClick += SystemTrayDoubleClick;
             RefreshAll();
         }
-
+        
         private readonly List<FileSystemWatcher> _watchers = new();
+        
+        private void From1_Resize(object? sender, EventArgs e)
+        {
+            if (MinimizeToSystemTrayCheckBox.Checked)
+            {
+                if (WindowState == FormWindowState.Minimized)
+                {
+                    Hide();
+                    systemTray.Visible = true;
+                }
+            }
+        }
+        
+        private void SystemTrayDoubleClick(object? sender, EventArgs e)
+        {
+            if (MinimizeToSystemTrayCheckBox.Checked)
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+                systemTray.Visible = false;
+            }
+        }
 
         #region Monitor
 
@@ -109,6 +133,7 @@ namespace Sorter
             FolderToMonitorList.Items.Clear();
             
             //Empties watchers list
+            foreach(var watcher in _watchers) watcher.Dispose();
             _watchers.Clear();
 
             //Reads the File again and adds it to the current gui element
@@ -280,7 +305,13 @@ namespace Sorter
         {
 
         }
+
+        #endregion
+
+        #region Options
         
+        
+
         #endregion
     }
 }
