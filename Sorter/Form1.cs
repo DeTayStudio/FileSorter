@@ -7,10 +7,12 @@ namespace Sorter
             InitializeComponent();
 
             SortingOrderEnumComboBox.DataSource = Enum.GetValues(typeof(SortingOrder));
-            
+            DragFileToSortLabel.DragEnter += DragFileToSortLabel_DragEnter;
+            DragFileToSortLabel.DragDrop += (DragFileToSortLabel_DragOver);
             RefreshAll();
-
         }
+
+        private readonly List<FileSystemWatcher> _watchers = new();
 
         #region Monitor
 
@@ -92,8 +94,6 @@ namespace Sorter
 
         #endregion
         
-
-        
         #region Refresh
 
         private void RefreshAll()
@@ -108,11 +108,28 @@ namespace Sorter
             //Empties the Folder to monitor list
             FolderToMonitorList.Items.Clear();
             
+            //Empties watchers list
+            _watchers.Clear();
+
             //Reads the File again and adds it to the current gui element
-            foreach (var item in PersistentData.FoldersToMonitor)
+            foreach (var folder in PersistentData.FoldersToMonitor)
             {
-                FolderToMonitorList.Items.Add(item);
+                FolderToMonitorList.Items.Add(folder);
+
+                var watcher = new FileSystemWatcher(folder);
+                watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+                                                                | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+                watcher.Filter = "*.*";
+                watcher.Changed += OnChanged;
+                watcher.EnableRaisingEvents = true;
+                
+                _watchers.Add(watcher);
             }
+        }
+
+        private void OnChanged(object sender, FileSystemEventArgs e)
+        {
+            Sort(e.FullPath);
         }
 
         private void RefreshMainSortingDirectory()
@@ -144,11 +161,11 @@ namespace Sorter
             {
                 var fileInfo = new FileInfo(path);
 
-                string sortPath = PersistentData.SortingPath;
+                var sortPath = PersistentData.SortingPath;
                 
-                for (int i = 0; i < SortingOrderListBox.Items.Count; i++)
+                foreach (var sortingOrderParameter in SortingOrderListBox.Items)
                 {
-                    var sortingOrder = Enum.Parse<SortingOrder>((string)SortingOrderListBox.Items[i]);
+                    var sortingOrder = Enum.Parse<SortingOrder>((string)sortingOrderParameter);
                     
                     switch (sortingOrder)
                     {
@@ -166,7 +183,9 @@ namespace Sorter
                     if (!Directory.Exists(sortPath)) Directory.CreateDirectory(sortPath);
                 }
 
-                File.Move(fileInfo.FullName, sortPath + @"\" +  fileInfo.Name);
+                sortPath += @"\" + fileInfo.Name;
+
+                File.Move(fileInfo.FullName, sortPath);
             }
             else
             {
@@ -183,7 +202,18 @@ namespace Sorter
             //Sorts the given file
             Sort(explorer.FileName);
         }
-
+        
+        private void DragFileToSortLabel_DragEnter(object? sender, DragEventArgs e)
+        {
+            if (e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+        
+        private void DragFileToSortLabel_DragOver(object? sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data?.GetData(DataFormats.FileDrop)!;
+            foreach (string file in files) Sort(file);
+        }
+        
         private void SortingOrderAddButton_Click(object sender, EventArgs e)
         {
             var sortingOrder = (SortingOrder) SortingOrderEnumComboBox.SelectedItem;
@@ -235,10 +265,7 @@ namespace Sorter
         {
 
         }
-
-
+        
         #endregion
-
-
     }
 }
