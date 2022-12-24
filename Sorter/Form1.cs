@@ -11,33 +11,14 @@ namespace Sorter
             DragFileToSortLabel.DragDrop += (DragFileToSortLabel_DragOver);
             Resize += From1_Resize;
             systemTray.DoubleClick += SystemTrayDoubleClick;
+            AllowMonitoringCheckBox.CheckedChanged += AllowMonitoringCheckBox_CheckedChanged;
             RefreshAll();
         }
-        
+
+
+
         private readonly List<FileSystemWatcher> _watchers = new();
         
-        private void From1_Resize(object? sender, EventArgs e)
-        {
-            if (MinimizeToSystemTrayCheckBox.Checked)
-            {
-                if (WindowState == FormWindowState.Minimized)
-                {
-                    Hide();
-                    systemTray.Visible = true;
-                }
-            }
-        }
-        
-        private void SystemTrayDoubleClick(object? sender, EventArgs e)
-        {
-            if (MinimizeToSystemTrayCheckBox.Checked)
-            {
-                Show();
-                WindowState = FormWindowState.Normal;
-                systemTray.Visible = false;
-            }
-        }
-
         #region Monitor
 
         private void FolderToMonitorList_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,16 +123,19 @@ namespace Sorter
                 //Adds folders to monitorList
                 FolderToMonitorList.Items.Add(folder);
 
-                //Creates a watcher for each folder
-                var watcher = new FileSystemWatcher(folder);
-                watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
-                                                                | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-                watcher.Filter = "*.*";
-                watcher.Changed += ((_, args) => Sort(args.FullPath)) ;
-                watcher.EnableRaisingEvents = true;
+                if (AllowMonitoringCheckBox.Checked)
+                {
+                    //Creates a watcher for each folder
+                    var watcher = new FileSystemWatcher(folder);
+                    watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+                                                                    | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+                    watcher.Filter = "*.*";
+                    watcher.Changed += ((_, args) => Sort(args.FullPath)) ;
+                    watcher.EnableRaisingEvents = true;
                 
-                //Adds the watcher to the watcherList
-                _watchers.Add(watcher);
+                    //Adds the watcher to the watcherList
+                    _watchers.Add(watcher);
+                }
             }
         }
         
@@ -220,7 +204,8 @@ namespace Sorter
                 destPath += @"\" + fileInfo.Name;
 
                 //Moves the File from current Path to the generated destinationPath
-                File.Move(fileInfo.FullName, destPath);
+                if (!File.Exists(destPath)) File.Move(fileInfo.FullName, destPath);
+                else MessageBox.Show(@"There is already a file with the same name in the destination folder");
             }
             else
             {
@@ -296,6 +281,45 @@ namespace Sorter
             }
         }
 
+        private void ResortButton_Click(object sender, EventArgs e)
+        {
+            //Gets all files in the main sorting folder
+            var files = Directory.GetFiles(PersistentData.SortingPath, "*", SearchOption.AllDirectories);
+
+            //Creates tempFolder
+            var tempFolder = PersistentData.SortingPath + @"\temp";
+            if (!Directory.Exists(tempFolder)) Directory.CreateDirectory(tempFolder);
+            
+            //Moves all files to tempFolder
+            foreach (var file in files)
+            {
+                var fileInfo = new FileInfo(file);
+                File.Move(file, tempFolder + @"\" + fileInfo.Name);
+            }
+
+            var directories = Directory.GetDirectories(PersistentData.SortingPath, "*", SearchOption.AllDirectories);
+            foreach (var directory in directories)
+            {
+                //Security check to prevent deleting the any important files
+                if (Directory.Exists(directory) && Directory.GetFiles(directory, "*", SearchOption.AllDirectories).Length == 0)
+                {
+                    
+                    //Deletes empty directories
+                    Directory.Delete(directory, true);
+                }
+            }
+            
+            //Sorts all files from tempFolder to new sorting order
+            foreach (var file in Directory.GetFiles(tempFolder, "*", SearchOption.AllDirectories))
+            {
+                Sort(file);
+            }
+            
+            //Deletes tempFolder
+            if(Directory.GetFiles(tempFolder, "*", SearchOption.AllDirectories).Length == 0)Directory.Delete(tempFolder);
+            else MessageBox.Show(@"Not all files could be sorted, check temp folder to see which files are left");
+        }
+
         private void SortingOrderListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -306,12 +330,45 @@ namespace Sorter
 
         }
 
+
         #endregion
 
         #region Options
-        
-        
 
+        private void OptionsGroupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void From1_Resize(object? sender, EventArgs e)
+        {
+            if (MinimizeToSystemTrayCheckBox.Checked)
+            {
+                if (WindowState == FormWindowState.Minimized)
+                {
+                    Hide();
+                    systemTray.Visible = true;
+                    systemTray.BalloonTipText = @"Minimized To System Tray";
+                    systemTray.ShowBalloonTip(3000);
+                }
+            }
+        }
+        
+        private void SystemTrayDoubleClick(object? sender, EventArgs e)
+        {
+            if (MinimizeToSystemTrayCheckBox.Checked)
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+                systemTray.Visible = false;
+            }
+        }
+        
+        private void AllowMonitoringCheckBox_CheckedChanged(object? sender, EventArgs e)
+        {
+            RefreshFolderToMonitorList();
+        }
+        
         #endregion
     }
 }

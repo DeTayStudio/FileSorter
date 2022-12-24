@@ -45,8 +45,10 @@
             this.MainFolderTextBox = new System.Windows.Forms.TextBox();
             this.MainSettingsGroupBox = new System.Windows.Forms.GroupBox();
             this.MainFolderSelectionButton = new System.Windows.Forms.Button();
+            this.ResortButton = new System.Windows.Forms.Button();
             this.systemTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.OptionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.AllowMonitoringCheckBox = new System.Windows.Forms.CheckBox();
             this.MinimizeToSystemTrayCheckBox = new System.Windows.Forms.CheckBox();
             this.FolderToMonitorGroupBox.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -97,7 +99,7 @@
             this.FolderToMonitorGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.FolderToMonitorGroupBox.Location = new System.Drawing.Point(500, 73);
             this.FolderToMonitorGroupBox.Name = "FolderToMonitorGroupBox";
-            this.FolderToMonitorGroupBox.Size = new System.Drawing.Size(500, 764);
+            this.FolderToMonitorGroupBox.Size = new System.Drawing.Size(500, 981);
             this.FolderToMonitorGroupBox.TabIndex = 4;
             this.FolderToMonitorGroupBox.TabStop = false;
             this.FolderToMonitorGroupBox.Text = "Monitor";
@@ -108,7 +110,7 @@
             this.panel1.Controls.Add(this.RemoveFolderToMonitor);
             this.panel1.Controls.Add(this.AddFolderToMonitorButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 697);
+            this.panel1.Location = new System.Drawing.Point(3, 914);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(494, 64);
             this.panel1.TabIndex = 8;
@@ -121,7 +123,7 @@
             this.SortingGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.SortingGroupBox.Location = new System.Drawing.Point(0, 73);
             this.SortingGroupBox.Name = "SortingGroupBox";
-            this.SortingGroupBox.Size = new System.Drawing.Size(500, 764);
+            this.SortingGroupBox.Size = new System.Drawing.Size(500, 981);
             this.SortingGroupBox.TabIndex = 5;
             this.SortingGroupBox.TabStop = false;
             this.SortingGroupBox.Text = "Sorting";
@@ -130,7 +132,7 @@
             // 
             this.SortingOrderEnumComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.SortingOrderEnumComboBox.FormattingEnabled = true;
-            this.SortingOrderEnumComboBox.Location = new System.Drawing.Point(3, 664);
+            this.SortingOrderEnumComboBox.Location = new System.Drawing.Point(3, 881);
             this.SortingOrderEnumComboBox.Name = "SortingOrderEnumComboBox";
             this.SortingOrderEnumComboBox.Size = new System.Drawing.Size(494, 33);
             this.SortingOrderEnumComboBox.TabIndex = 8;
@@ -141,7 +143,7 @@
             this.panel2.Controls.Add(this.SortingOrderRemoveButton);
             this.panel2.Controls.Add(this.SortingOrderAddButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 697);
+            this.panel2.Location = new System.Drawing.Point(3, 914);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(494, 64);
             this.panel2.TabIndex = 8;
@@ -187,9 +189,9 @@
             this.DragFileToSortLabel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.DragFileToSortLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DragFileToSortLabel.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DragFileToSortLabel.Location = new System.Drawing.Point(0, 837);
+            this.DragFileToSortLabel.Location = new System.Drawing.Point(0, 1054);
             this.DragFileToSortLabel.Name = "DragFileToSortLabel";
-            this.DragFileToSortLabel.Size = new System.Drawing.Size(1508, 157);
+            this.DragFileToSortLabel.Size = new System.Drawing.Size(1503, 157);
             this.DragFileToSortLabel.TabIndex = 0;
             this.DragFileToSortLabel.Text = "Drag file onto here to Sort!";
             this.DragFileToSortLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -208,11 +210,12 @@
             // MainSettingsGroupBox
             // 
             this.MainSettingsGroupBox.Controls.Add(this.MainFolderSelectionButton);
+            this.MainSettingsGroupBox.Controls.Add(this.ResortButton);
             this.MainSettingsGroupBox.Controls.Add(this.MainFolderTextBox);
             this.MainSettingsGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainSettingsGroupBox.Location = new System.Drawing.Point(0, 0);
             this.MainSettingsGroupBox.Name = "MainSettingsGroupBox";
-            this.MainSettingsGroupBox.Size = new System.Drawing.Size(1508, 73);
+            this.MainSettingsGroupBox.Size = new System.Drawing.Size(1503, 73);
             this.MainSettingsGroupBox.TabIndex = 7;
             this.MainSettingsGroupBox.TabStop = false;
             this.MainSettingsGroupBox.Text = "Main";
@@ -220,13 +223,24 @@
             // MainFolderSelectionButton
             // 
             this.MainFolderSelectionButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.MainFolderSelectionButton.Location = new System.Drawing.Point(1292, 27);
+            this.MainFolderSelectionButton.Location = new System.Drawing.Point(1171, 27);
             this.MainFolderSelectionButton.Name = "MainFolderSelectionButton";
-            this.MainFolderSelectionButton.Size = new System.Drawing.Size(213, 43);
+            this.MainFolderSelectionButton.Size = new System.Drawing.Size(189, 43);
             this.MainFolderSelectionButton.TabIndex = 7;
             this.MainFolderSelectionButton.Text = "...";
             this.MainFolderSelectionButton.UseVisualStyleBackColor = true;
             this.MainFolderSelectionButton.Click += new System.EventHandler(this.MainFolderSelectionButton_Click);
+            // 
+            // ResortButton
+            // 
+            this.ResortButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ResortButton.Location = new System.Drawing.Point(1360, 27);
+            this.ResortButton.Name = "ResortButton";
+            this.ResortButton.Size = new System.Drawing.Size(140, 43);
+            this.ResortButton.TabIndex = 8;
+            this.ResortButton.Text = "Resort";
+            this.ResortButton.UseVisualStyleBackColor = true;
+            this.ResortButton.Click += new System.EventHandler(this.ResortButton_Click);
             // 
             // systemTray
             // 
@@ -235,14 +249,28 @@
             // 
             // OptionsGroupBox
             // 
+            this.OptionsGroupBox.Controls.Add(this.AllowMonitoringCheckBox);
             this.OptionsGroupBox.Controls.Add(this.MinimizeToSystemTrayCheckBox);
             this.OptionsGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.OptionsGroupBox.Location = new System.Drawing.Point(1000, 73);
             this.OptionsGroupBox.Name = "OptionsGroupBox";
-            this.OptionsGroupBox.Size = new System.Drawing.Size(500, 764);
+            this.OptionsGroupBox.Size = new System.Drawing.Size(500, 981);
             this.OptionsGroupBox.TabIndex = 8;
             this.OptionsGroupBox.TabStop = false;
             this.OptionsGroupBox.Text = "Options";
+            this.OptionsGroupBox.Enter += new System.EventHandler(this.OptionsGroupBox_Enter);
+            // 
+            // AllowMonitoringCheckBox
+            // 
+            this.AllowMonitoringCheckBox.AutoSize = true;
+            this.AllowMonitoringCheckBox.Checked = true;
+            this.AllowMonitoringCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AllowMonitoringCheckBox.Location = new System.Drawing.Point(3, 62);
+            this.AllowMonitoringCheckBox.Name = "AllowMonitoringCheckBox";
+            this.AllowMonitoringCheckBox.Size = new System.Drawing.Size(195, 29);
+            this.AllowMonitoringCheckBox.TabIndex = 1;
+            this.AllowMonitoringCheckBox.Text = "Activate Monitoring";
+            this.AllowMonitoringCheckBox.UseVisualStyleBackColor = true;
             // 
             // MinimizeToSystemTrayCheckBox
             // 
@@ -262,13 +290,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1508, 994);
+            this.ClientSize = new System.Drawing.Size(1503, 1211);
             this.Controls.Add(this.OptionsGroupBox);
             this.Controls.Add(this.FolderToMonitorGroupBox);
             this.Controls.Add(this.SortingGroupBox);
             this.Controls.Add(this.MainSettingsGroupBox);
             this.Controls.Add(this.DragFileToSortLabel);
-            this.MaximumSize = new System.Drawing.Size(3840, 2160);
+            this.MaximumSize = new System.Drawing.Size(1525, 1267);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -304,5 +332,7 @@
         private NotifyIcon systemTray;
         private GroupBox OptionsGroupBox;
         private CheckBox MinimizeToSystemTrayCheckBox;
+        private Button ResortButton;
+        private CheckBox AllowMonitoringCheckBox;
     }
 }
